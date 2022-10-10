@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.blog-post-content h2 {
+  @apply text-red-500 ml-2;
+}
+
+.blog-post-content ul {
+  @apply pl-10 list-disc;
+}

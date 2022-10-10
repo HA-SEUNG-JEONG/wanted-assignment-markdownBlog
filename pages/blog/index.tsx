@@ -19,7 +19,7 @@ const blog: NextPage<{ posts: Post[] }> = ({ posts }) => {
           <span className="text-lg text-red-500">{post.categories}</span>
           <div>
             <span>
-              {post.date} / {post.tags}
+              {post.date} / {post.description}
             </span>
           </div>
         </div>
