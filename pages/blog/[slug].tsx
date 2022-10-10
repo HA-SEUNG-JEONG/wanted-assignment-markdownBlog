@@ -5,7 +5,7 @@ import remarkHtml from "remark-html";
 import remarkParse from "remark-parse/lib";
 import { unified } from "unified";
 
-const Post: NextPage<{ post: string; data: any }> = ({ post, data }) => {
+const Post: NextPage<{ post: string }> = ({ post }) => {
   return <section className="blog-post-content" dangerouslySetInnerHTML={{ __html: post }} />;
 };
 
@@ -25,7 +25,7 @@ export function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { content, data } = matter.read(`./__posts/${ctx.params?.slug}.md`);
   const { value } = await unified().use(remarkParse).use(remarkHtml).process(content);
-
+  console.log(value);
   return {
     props: {
       data,
