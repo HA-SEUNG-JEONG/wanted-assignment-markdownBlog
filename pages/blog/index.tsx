@@ -31,7 +31,7 @@ const blog: NextPage<{ posts: Post[] }> = ({ posts }) => {
 export async function getStaticProps() {
   const blogPosts = readdirSync("./__posts").map((file) => {
     const content = readFileSync(`./__posts/${file}`, "utf-8");
-    return matter(content).data;
+    return JSON.parse(JSON.stringify(matter(content).data));
   });
 
   return {
