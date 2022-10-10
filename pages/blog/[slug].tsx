@@ -11,7 +11,7 @@ const Post: NextPage<{ post: string }> = ({ post }) => {
 
 //getStaticPaths는 동적인 URL 페이지에서 getStaticProps을 사용할 때 필요함
 export function getStaticPaths() {
-  const files = readdirSync("./posts").map((file) => {
+  const files = readdirSync("./__posts").map((file) => {
     const [name, _] = file.split(".");
     return { params: { slug: name } };
   });
@@ -23,7 +23,7 @@ export function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { content } = matter.read(`./posts/${ctx.params?.slug}.md`);
+  const { content } = matter.read(`./__posts/${ctx.params?.slug}.md`);
   const { value } = await unified().use(remarkParse).use(remarkHtml).process(content);
 
   return {
