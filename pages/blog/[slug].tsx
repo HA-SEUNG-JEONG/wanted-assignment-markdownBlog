@@ -25,7 +25,6 @@ export function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { content, data } = matter.read(`./__posts/${ctx.params?.slug}.md`);
   const { value } = await unified().use(remarkParse).use(remarkHtml).process(content);
-  console.log(value);
   return {
     props: {
       data,
