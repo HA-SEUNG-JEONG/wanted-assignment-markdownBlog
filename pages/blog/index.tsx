@@ -3,6 +3,7 @@ import matter from "gray-matter";
 import { NextPage } from "next";
 
 interface Post {
+  id: number;
   categories: string;
   date: string;
   description: string;
@@ -13,9 +14,8 @@ interface Post {
 const blog: NextPage<{ posts: Post[] }> = ({ posts }) => {
   return (
     <>
-      <h1 className="text-blue-600">First Blog</h1>
-      {posts.map((post, index) => (
-        <div key={index} className="mb-5">
+      {posts.map((post, id) => (
+        <div key={id} className="mb-5">
           <span className="text-lg text-red-500">{post.categories}</span>
           <div>
             <span>
