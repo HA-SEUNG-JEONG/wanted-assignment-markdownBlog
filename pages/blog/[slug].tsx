@@ -5,8 +5,13 @@ import remarkHtml from "remark-html";
 import remarkParse from "remark-parse/lib";
 import { unified } from "unified";
 
-const Post: NextPage<{ post: string }> = ({ post }) => {
-  return <section className="blog-post-content" dangerouslySetInnerHTML={{ __html: post }} />;
+const Post: NextPage<{ post: string; data: string }> = ({ post, data }) => {
+  return (
+    <main>
+      <h1 className="ml-2 font-bold mb-2">{data}</h1>
+      <section className="blog-post-content" dangerouslySetInnerHTML={{ __html: post }} />;
+    </main>
+  );
 };
 
 //getStaticPaths는 동적인 URL 페이지에서 getStaticProps을 사용할 때 필요함
@@ -23,12 +28,12 @@ export function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { content, data } = matter.read(`./__posts/${ctx.params?.slug}.md`);
+  const { content } = matter.read(`./__posts/${ctx.params?.slug}.md`);
   const { value } = await unified().use(remarkParse).use(remarkHtml).process(content);
   return {
     props: {
-      data,
       post: value,
+      data: ctx.params?.slug,
     },
   };
 };
