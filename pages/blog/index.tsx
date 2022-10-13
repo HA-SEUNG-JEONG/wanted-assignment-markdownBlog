@@ -1,5 +1,3 @@
-import { readdirSync, readFileSync } from "fs";
-import matter from "gray-matter";
 import { NextPage } from "next";
 import { getPosts } from "../api/getPosts";
 
