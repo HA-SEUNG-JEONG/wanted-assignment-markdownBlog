@@ -21,7 +21,6 @@ export function getStaticPaths() {
     return { params: { slug: name } };
   });
   return {
-    //paths와 fallback은 반드시 필요 -> 이 부분은 더 찾아봐야 할듯
     paths: files,
     fallback: false,
   };
