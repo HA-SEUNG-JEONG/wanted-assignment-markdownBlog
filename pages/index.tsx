@@ -17,7 +17,9 @@ const Home: NextPage = () => {
           pathname: "/blog",
         }}
       >
-        <a>Go To Blog</a>
+        <a className="font-bold flex justify-center items-center mt-10 hover:text-gray-300">
+          Go To Blog
+        </a>
       </Link>
     </div>
   );

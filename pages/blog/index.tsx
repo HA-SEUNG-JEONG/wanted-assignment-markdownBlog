@@ -21,7 +21,7 @@ const blog: NextPage<{ posts: Post[] }> = ({ posts }) => {
           <section className="font-bold">{post.title}</section>
           <div>
             <span>
-              <h2 className="title">
+              <h2 className="opacity-50">
                 {post.date} / {post.description}
               </h2>
             </span>
