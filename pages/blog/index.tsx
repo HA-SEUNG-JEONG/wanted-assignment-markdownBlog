@@ -14,16 +14,14 @@ interface Post {
 const blog: NextPage<{ posts: Post[] }> = ({ posts }) => {
   return (
     <>
-      {posts.map((post) => (
-        <main className="my-5 ml-10">
+      {posts.map((post, id) => (
+        <main key={id} className="my-5 ml-10">
           <section className="font-bold">{post.title}</section>
-          <div>
-            <span>
-              <h2 className="opacity-50">
-                {post.date} / {post.description}
-              </h2>
-            </span>
-          </div>
+          <span>
+            <h2 className="opacity-50">
+              {post.date} / {post.description}
+            </h2>
+          </span>
         </main>
       ))}
     </>
